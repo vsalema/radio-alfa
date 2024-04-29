@@ -1,116 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
-  <style>* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    transition: all 0.35s linear;
-}
+<html>
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    --bg: #;
-    background-color: transparent;
-    color: #11a1da;
-}
+<!--
+ *
+ * ZEN - HTML5-CSS3 Audio Player
+ * Author: @simurai (simurai.com)
+ *
+ * Powered by: jPlayer (jplayer.org)
+ * Inspiration: CirclePlayer by @maboa (https://github.com/maboa/circleplayer)
+ *
+ -->
 
-.player {
-    width: 236px;
-    background-color: #1c1c1c;
-    display: grid;
-    grid-template-columns: 48px 1fr 48px;
-    grid-gap: 16px;
-    padding: 8px 24px;
-    position: relative;
-    border-radius: 64px;
-}
+<head>
+	<title>ZEN Player</title>
+	
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1;"> 
+    
+    <link rel="stylesheet" href="http://simurai.github.io/ZEN-Player/css/style.css">
+	<link rel="stylesheet" href="http://simurai.github.io/ZEN-Player/css/footer.css">
+	<link rel="stylesheet" href="http://simurai.github.io/ZEN-Player/css/zen.css">
 
-.control,#current {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-block: 16px;
-}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>   
+    <script type="text/javascript" src="http://simurai.github.io/ZEN-Player/js/jquery.rotate.js"></script>
+    <script type="text/javascript" src="http://simurai.github.io/ZEN-Player/js/jquery.grab.js"></script> 
+    <script type="text/javascript" src="http://simurai.github.io/ZEN-Player/js/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src=""></script>	
+</head>
+	
+<body>
 
-#playbtn {
-    font-size: 24px;
-    color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    cursor: pointer;
-}
+	<div id="zen">
+		<span class="player"></span>
+		<span class="circle"></span>
+		<span class="progress"></span>
+		<span class="buffer"></span>
+		<span class="drag"></span>
+		<div class="button">
+			<span class="icon play"></span>
+			<span class="icon pause"></span>
+		</div>
+	</div>
 
-#playbtn:hover {
-    -webkit-text-fill-color: white;
-}
 
-.info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 21px;
-}
 
-#current {
-    text-align: right;
-}
 
-.bar {
-    --space: -4px;
-    background-color: #24242424;
-    overflow: hidden;
-    left: var(--space);
-    right: var(--space);
-    top: var(--space);
-    bottom: var(--space);
-    position: absolute;
-    border-radius: 64px;
-    z-index: -2;
-}
-
-#progress {
-    display: blcok;
-    width: var(--progress,0%);
-    background-color: white;
-    transition: all 1s linear;
-    height: 100%;
-}
-  </style>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini Audio Player</title>
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../res/fontawesome/css/all.css" />
-    <link rel="stylesheet" href="./main.css" />
-  </head>
-  <body>
-    <audio id="player" src="https://n16a-eu.rcs.revma.com/amrbkhqtkm0uv?rj-ttl=5&rj-tok=AAABjyZZV10A8pNBeIWHkkzM-w"></audio>
-    <div class="player">
-      <div class="control">
-        <i class="fas fa-play" id="playbtn"></i>
-      </div>
-      <div class="info">
-       RADIO ALFA
-        <div class="bar">
-          <div id="progress"></div>
+    <!-- Footer --------------------------------------- -->
+    
+    <div id="footer">
+        
+        <h1>ZEN Player</h1>
+        <nav class="links">
+            <a href="http://simurai.com/post/2931027283/zen-html5-audio-player">Info</a>
+            <a href="https://github.com/simurai/ZEN-Player">Source</a>
+        </nav>
+        
+        <div class="social">
+            
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="simurai" data-count="none">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            
+            <g:plusone size="medium" annotation="none"></g:plusone>            
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+            
         </div>
-      </div>
-
-      <div id="current">0:00</div>
+        
+        <nav class="stamp">
+            <div class="ink"></div>
+        </nav>
+        
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/yohanstesfaye/Adey-Coder@master/Javascript/MiniPlayer/player.js"></script>
-  </body>
+
+	
+<!-- Google --------------------------------------- -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-599923-1']);
+  _gaq.push(['_setDomainName', 'simurai.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  
+
+/*
+ *
+ * ZEN - HTML5-CSS3 Audio Player
+ * by @simurai (simurai.com)
+ *
+ * Most of this code by: @maboa (happyworm.com)
+ * and: @quinnirill (niiden.com/jussi/)
+ *
+ */
+
+
+
+$(document).ready(function(){    
+		
+  	var status = "stop";
+	var dragging = false;
+	
+
+	
+	// init
+	
+	var player = $("#zen .player");
+		
+	player.jPlayer({
+			ready: function () {
+      		$(this).jPlayer("setMedia", {
+    			m4a: "https://n16a-eu.rcs.revma.com/amrbkhqtkm0uv?rj-ttl=5&rj-tok=AAABjyZZV10A8pNBeIWHkkzM-w",
+				mp3: "https://n16a-eu.rcs.revma.com/amrbkhqtkm0uv?rj-ttl=5&rj-tok=AAABjyZZV10A8pNBeIWHkkzM-w",
+        		oga: "https://n16a-eu.rcs.revma.com/amrbkhqtkm0uv?rj-ttl=5&rj-tok=AAABjyZZV10A8pNBeIWHkkzM-w"
+      		});
+    	},
+    	swfPath: "",
+		supplied: "m4a, mp3, oga"         
+  	});  
+
+
+
+
+	
+	// preload, update, end
+	
+	player.bind($.jPlayer.event.progress, function(event) {    
+			
+		var audio = $('#zen audio').get(0);
+		var pc = 0;    
+				
+		if ((audio.buffered != undefined) && (audio.buffered.length != 0)) {
+		 	pc = parseInt(((audio.buffered.end(0) / audio.duration) * 100), 10); 
+		  	displayBuffered(pc);
+		  	//console.log(pc);
+		  	if(pc >= 99) {
+		  		//console.log("loaded");
+		  		$('#zen .buffer').addClass("loaded");
+		  	}  
+		}        
+		
+	});
+	
+	//player.bind($.jPlayer.event.loadeddata, function(event) {    
+		//$('#zen .buffer').addClass("loaded");    
+	//});
+	
+	player.bind($.jPlayer.event.timeupdate, function(event) { 
+		var pc = event.jPlayer.status.currentPercentAbsolute;
+		if (!dragging) { 
+	    	displayProgress(pc);
+		}
+	});
+	
+	player.bind($.jPlayer.event.ended, function(event) {   
+		$('#zen .circle').removeClass( "rotate" );
+		$("#zen").removeClass( "play" );
+		$('#zen .progress').css({rotate: '0deg'});
+		status = "stop";
+	});
+	
+	
+	
+	
+	
+	// play/pause
+	
+	$("#zen .button").bind('mousedown', function() {
+		// not sure if this can be done in a simpler way.
+		// when you click on the edge of the play button, but button scales down and doesn't drigger the click,
+		// so mouseleave is added to still catch it.
+		$(this).bind('mouseleave', function() {
+			$(this).unbind('mouseleave');
+			onClick();
+		});
+	});
+	
+	$("#zen .button").bind('mouseup', function() {
+		$(this).unbind('mouseleave');
+		onClick();
+	});
+	
+	
+	function onClick() {  		
+                    
+        if(status != "play") {
+			status = "play";
+			$("#zen").addClass( "play" );
+			player.jPlayer("play");
+		} else {
+			$('#zen .circle').removeClass( "rotate" );
+			$("#zen").removeClass( "play" );
+			status = "pause";
+			player.jPlayer("pause");
+		}
+	};
+	
+	
+	
+	
+	// draggin
+	
+	var clickControl = $('#zen .drag');
+	
+	clickControl.grab({
+		onstart: function(){
+			dragging = true;
+			$('#zen .button').css( "pointer-events", "none" );
+			
+		}, onmove: function(event){
+			var pc = getArcPc(event.position.x, event.position.y);
+			player.jPlayer("playHead", pc).jPlayer("play");
+			displayProgress(pc);
+			
+		}, onfinish: function(event){
+			dragging = false;
+			var pc = getArcPc(event.position.x, event.position.y);
+			player.jPlayer("playHead", pc).jPlayer("play");
+			$('#zen .button').css( "pointer-events", "auto" );
+		}
+	});	
+	
+	
+	
+	
+	
+	
+	// functions
+	
+	function displayProgress(pc) {
+		var degs = pc * 3.6+"deg"; 
+		$('#zen .progress').css({rotate: degs}); 		
+	}
+	function displayBuffered(pc) {
+		var degs = pc * 3.6+"deg"; 
+		$('#zen .buffer').css({rotate: degs}); 		
+	}
+	
+	function getArcPc(pageX, pageY) { 
+		var	self	= clickControl,
+			offset	= self.offset(),
+			x	= pageX - offset.left - self.width()/2,
+			y	= pageY - offset.top - self.height()/2,
+			a	= Math.atan2(y,x);  
+			
+			if (a > -1*Math.PI && a < -0.5*Math.PI) {
+		   a = 2*Math.PI+a; 
+		} 
+
+		// a is now value between -0.5PI and 1.5PI 
+		// ready to be normalized and applied   			
+		var pc = (a + Math.PI/2) / 2*Math.PI * 10;   
+		   
+		return pc;
+	}
+	
+
+	
+	
+});
+</script><!--/ Google -->
+
+
+</body>
 </html>
