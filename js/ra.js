@@ -1,4 +1,4 @@
-const body=document.getElementsByTagName("header").item(0);
+const body=document.getElementsByTagName("body").item(0);
 body.style.background="#000";
 const TP=2*Math.PI;
 const CSIZE=400;
